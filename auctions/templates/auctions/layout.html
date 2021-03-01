@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>{% block title %}E-Auction{% endblock %}</title>
+        <link href="{% static 'auctions/CSS/styles.css' %}" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'auctions/Images/shield.png' %}">
+    </head>
+    <body>
+
+        <div class="navbar">
+            <div class="img">
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'auctions/Images/shield.png' %}" alt="E-Auction">
+                </a>
+            </div>
+            
+            <div class="search">
+                <form action="{% url 'search' %}" method="GET">
+                    <div>
+                        <input class="text" type="text" name="q" placeholder="Search for anything">
+                        <select class="categories" name="category">
+                            <option value="">All categories</option>
+                            <option value="1">Fashion</option>
+                            <option value="2">Electronics</option>
+                            <option value="3">Toys & Collectibles</option>
+                            <option value="4">Books, Movies and Music</option>
+                        </select>
+                    </div>
+                    <input class="submit" type="submit" name="btn" value="Search">    
+                </form>
+            </div>
+
+            <div class="nav">
+                {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <a class="dropbtn" href="#">
+                            <img src="{% static 'auctions/Images/user.png' %}">
+                        </a>
+                        <div class="dropdown-content">
+                            <a id="signed-as" href="#">{{ request.user }}</a>
+                            <a href="{% url 'mylistings' %}">My Listings</a>
+                            <a href="{% url 'newlisting' %}">New Listing</a>
+                            <a href="{% url 'watchlist' %}">Watchlist</a>
+                            <a id="logout" href="{% url 'logout' %}">Log Out</a>
+                        </div>
+
+                    </div>
+                {% else %}
+                    <a href="{% url 'login' %}">Log In | Register</a>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <div class="go-category">
+            <a href="{% url 'catlistings' catid=1 %}">Fashion</a>
+            <a href="{% url 'catlistings' catid=2 %}">Electronics</a>
+            <a href="{% url 'catlistings' catid=3 %}">Toys & Collectibles</a>
+            <a href="{% url 'catlistings' catid=4 %}">Books, Movies & Music</a>
+        </div>
+
+        <div>
+
+            {% block content %}
+            {% endblock %}
+
+            {% block body %}
+            {% endblock %}  
+
+        </div>
+        
+    </body>
+</html>

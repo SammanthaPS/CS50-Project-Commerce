@@ -1,0 +1,805 @@
+// layout page
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+$font-sans: 'Poppins', sans-serif;
+$font-serif: 'Lucida Bright', serif;
+$font-monospace: 'iA Writer Duospace', monospace;
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: $font-sans;
+    font-weight: 300;
+	font-size: 15px;
+	line-height: 1.7;
+	overflow-x: hidden;
+    //background-image: linear-gradient(180deg, white, rgb(255, 193, 193));
+}
+
+.navbar {
+    height: 108px;
+    display: flex;
+}
+
+.img img {
+    background-color: none;
+    padding: 10px;
+    width: 200px;
+}
+
+.search {
+    text-align: center;
+    border-bottom: 1px solid #ffb349;
+    padding: 35px 200px 0 205px;
+}
+
+.search div {
+    border: 2px solid #A41034;
+    width: 715px;
+    height: 40px;
+    float: left;
+}
+
+select.categories {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 10px;
+}
+
+.categories option {
+    color: #896532;
+}
+
+.search .text {
+    font-size: 12pt;
+    font-family: $font-sans;
+    color: #896532;
+    background: none;
+    width: 481px;
+    height: 30px;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+}
+
+.search .text::placeholder {
+    font-family: $font-sans;
+    color: #896532;
+    opacity: 63%;
+}
+
+.search .categories {
+    font-size: 10pt;
+    font-family: $font-sans;
+    color: #896532;
+    width: 210px;
+    height: 40px;
+    padding-left: 10px;
+    border: transparent;
+    border-left: 1px solid #A41034;
+    outline: none;
+}
+
+.search .submit {
+    font-size: 13pt;
+    font-family: $font-sans;
+    width: 100px;
+    height: 44px;
+    color: white;
+    background-image: linear-gradient(to bottom right, #A41034, #ffb349);
+    border: none;
+    cursor: pointer;
+}
+.submit:hover {
+    color: #ffb349;
+    background: #A41034;
+}
+
+.nav {
+    text-align: center;
+    width: 200px;
+    padding-top: 45px;
+}
+
+.nav a {
+    color: #A41034;
+    font-size: 13pt;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    color: #896532;
+    text-decoration: underline;
+}
+
+// user dropdown list
+
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    background-color: #A41034;
+    background-image: linear-gradient(to bottom right, #A41034, #ffb349);
+    width: 190px;
+    height: 190px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 2px;
+}
+
+.dropdown-content #signed-as {
+    text-transform: capitalize;
+    color: #ffb349;
+    background-color: black;
+    cursor: context-menu;
+    
+}
+
+.dropdown-content #logout {
+    color: black;
+}
+
+.dropdown-content #logout:hover {
+    color: #ffb349;
+}
+
+.dropdown-content a:hover {
+    background-color: #A41034;
+    color: #ffb349;
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    position: relative;
+}
+
+// category list
+
+.go-category {
+    text-align: center;
+    border-bottom: 1px solid #ffb349;
+    margin: 0 201px 0 219px;
+    padding: 8px 0 8px 0;
+}
+
+.go-category a {
+    color: #896532;
+    text-decoration: none;
+    font-size: 12pt;
+    margin: 0 50px 0 50px;
+}
+
+.go-category a:hover {
+    color: #A41034;
+    text-decoration: underline;
+}
+
+// index page
+
+// Block content
+
+#card-content {
+    border: 1px solid transparent;
+    width: 100%;
+    height: 400px;
+
+    #card-background {
+        width: 100%;
+        height: 100%;
+    }
+
+    #card-background {
+        img {
+            width: 100%;
+        }
+    }
+}
+
+// index, active Listings:
+
+#l-c {
+    width: 100%;
+    font-family: $font-sans;
+    padding: 0 5px;
+}
+
+#c-c {
+    width: 250px;
+    height: 500px;
+    border: 1px solid #D1D1D1;
+    background-color: #e8e8e8;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    margin: 35px 10px;
+    text-align: center;
+    float: left;
+
+}
+
+#c-img {
+    width: 231px;
+    height: 231px;
+    padding: 1px;
+
+    div {
+        border: none;
+        border-radius: 20px;
+        width: 223px;
+        height: 210px;
+        padding: 10px;
+
+        a {
+            img {
+                outline: none;
+                border: none;
+                border-radius: 20px;
+                max-width: 100%;
+                max-height: 100%;  
+            }      
+        }
+    }
+}
+
+a {
+    outline: none;
+    border: none;
+}
+
+#c-title, #c-seller, #c-bid {
+    height: 32px;
+    padding: 0;
+}
+
+#c-title a {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #A41034;
+    text-decoration: none;
+}
+
+#c-description {
+    height: 50px;
+    padding: 20px 1px;
+    font-weight: 600;
+    font-family: $font-serif;
+    color: #896532;
+}
+
+#c-seller {
+    color: #A41034;
+    opacity: 0.7;
+    font-size: 11pt;
+    padding: 5px 1px;
+    margin-top: 40px;
+}
+
+#c-bid {
+    float: left;
+    width: 100%;
+    color: #008C09;
+    font-size: 15pt;
+    text-align: center;
+    font-weight: 700;
+    padding: 0;
+}
+
+#closed-auction {
+    color: #ffb349;
+    text-transform: uppercase;
+    font-weight: 600;
+    background-color: black;
+    border-radius: 20px;
+    margin: 55px 25px 0 25px;
+    width: 200px;
+
+}
+
+// listing page
+
+#message-bid {
+    width: 100%;
+    height: 15px;
+    margin: 30px 100px 0 660px;
+}
+
+#bid-alert-message, #bid-success-message {
+    position: relative;
+    padding: .75rem 1.25rem;
+    border-radius: .25rem;
+    width: 800px;
+    border-color: #f5c6cb;
+    text-align: center;
+    font-size: 12pt;
+    color: #721c24;
+    background-color: #f8d7da;
+}
+
+#bid-success-message {
+    color: #155724;
+    border-color: #c3e6cb;
+    background-color: #d4edda;
+}
+
+.listing-info {
+    margin: 90px 30px 90px 30px;
+}
+
+.listing-info .info-img {
+    border: 1px solid #dadada;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    width: 600px;
+    height: 600px;
+    text-align: center;
+    float: left;
+
+    .info-img-img {
+        border: none;
+        border-radius: 15px;
+        width: 590px;
+        height: 525px;
+        margin: 35px 4px;
+
+        img {
+            border-radius: 15px;
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+}
+
+.listing-info .info {
+    border: none;
+    margin-left: 630px;
+    height: 560px;
+    font-family: $font-sans;
+
+    .ititle {
+        font-size: 20pt;
+        font-weight: 800;
+        color: #A41034;
+        border-bottom: 1px solid #cccccc;
+    }
+
+    .icondcat {
+        padding: 30px 0 30px 63px;
+        height: 130px;
+        font-size: 11pt;
+        color: #896532;
+        border-bottom: 1px solid #cccccc;
+
+        span {
+            font-size: 11pt;
+            color: black;
+            font-weight: normal;
+            font-weight: 700;
+        }
+
+        .bidquote {
+            color: #A41034;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .winnerquote {
+            margin: 15px 150px;
+            background-color: #A41034;
+            border-radius: 20px;
+            text-align: center;
+            color: #ffb349;
+            font-size: 13pt;
+        }
+
+        .winnerimage {
+            text-align: center;
+            margin: 0 150px;
+
+            img {
+                width: 78px;
+            }
+        }
+
+        .finalprice {
+            color: #008C09;
+            font-weight: 900;
+            margin-top: 15px;
+            font-size: 17pt;
+
+            span {
+                color: #A41034;
+            }
+        }
+    }
+
+    .idescription {
+        font-size: 11pt;
+        font-family: $font-serif;
+        text-align: center;
+        font-weight: 700;
+        color: #896532;
+        height: 25px;
+        padding: 10px 0;
+        border-bottom: 1px solid #cccccc;
+    }
+
+    .ibid {
+        padding: 30px 0 30px 63px;
+        height: 40px;
+        color: green;
+        font-size: 23pt;
+        font-weight: bold;
+        text-align: center;
+        float: left;
+        width: 50%;
+        border: none;
+
+        span {
+            color: black;
+            font-size: 11pt;
+            font-weight: 700;
+        }
+
+        #bid-from {
+            color: #ffb349;
+            font-size: 11pt;
+            font-family: $font-monospace;
+            font-style: italic;
+        }
+    }
+
+    .ibtn {
+        border: none;
+        margin-left: 535px;
+        height: 235px;
+        text-align: center;
+        padding: 0 15px;
+        
+        button, #watchlist-btn {
+            width: 210px;
+            height: 40px;
+            margin-top: 15px;
+            border: none;
+            background-image: linear-gradient(to bottom right, #A41034, #ffb349);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 11pt;
+            font-family: $font-sans;
+            outline: none;
+            cursor: pointer;
+        }
+
+        button:hover, #watchlist-btn:hover {
+            background: #A41034;
+        }
+        
+        #bid-form {
+            border: none;
+            border-radius: 5px;
+            height: 40px;
+            width: 245px;
+            margin: 30px 0 10px 0;
+            font-size: 11pt;
+            font-family: $font-sans;
+            
+            span {
+                text-align: center;
+                font-size: 18pt;
+                color: green;
+                background-color: #dadada;
+                padding-left: 5px;
+                height: 100%;
+                float: left;
+            }
+
+            div {
+                border: none;
+                outline: none;
+                float: left;
+                height: 100%;
+            }
+
+            #id_bid, #id_btn-bid {
+                outline: none;
+                border: none;
+                background-color: transparent;
+                height: 100%;
+                width: 110px;
+                text-align: center;
+                font-size: 12pt;
+                font-family: $font-sans;
+                color: white;
+            }
+            
+            #id_bid {
+                height: 95%;
+                background-color: #dadada;
+                color: green;
+                font-weight: 900;
+            }
+            
+            #id_btn-bid {
+                cursor: pointer;
+            }
+
+            #id_btn-bid:hover {
+                background: #A41034;
+            }
+
+            #btn-place-bid {
+                background-image: linear-gradient(to bottom right, #A41034, #ffb349);
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+}
+
+#comments {
+    border-bottom: 3px solid #A41034;
+    width: 100%;
+    height: 50px;
+    margin: 25px;
+    overflow-y: auto;
+    font-size: 25pt;
+    font-weight: 900;
+    color: #A41034;
+    text-transform: uppercase;
+}
+
+#loginrequired {
+    text-align: center;
+}
+
+#comment-section {
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background-color: #fce6c7;
+    width: 430px;
+    height: 100px;
+    margin: 0 2px 25px 25px;
+    padding: 20px;
+    float: left;
+}
+
+#commentTitle {
+    font-size: 13pt;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+#commentText {
+    font-size: 10pt;
+    word-wrap: break-word;
+}
+
+#commentUser {
+    text-transform: uppercase;
+    font-size: 11pt;
+    font-weight: 700;
+    color: #A41034;
+
+    span {
+        text-transform: capitalize;
+        font-weight: normal;
+        opacity: 0.3;
+    }
+}
+
+#commentform {
+    border: 1px solid #cfcfcf;
+    border-radius: 10px;
+    margin: 10px 500px 45px 510px;
+    width: 500px;
+    height: 320px;
+    background-color: #d4d4d4;
+    box-shadow: 0 4px 8px 0 rgba(21,21,21,0.2);
+    font-weight: 900;
+    font-size: 15pt;
+    text-transform: uppercase;
+}
+
+#section-title {
+    margin: 10px 0;
+    text-align: center;
+    width: 500px;
+}
+
+#comment-title, #comment-comment {
+    background-color: #A41034;
+    font-size: 13pt;
+    font-weight: 600;
+    margin: 10px 25px;
+    width: 500px;
+    padding: 0 13px 8px 13px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+
+#comment-title {
+    width: 415px;
+    height: 38px;
+}
+
+#comment-comment {
+    width: 415px;
+    height: 95px;
+}
+
+#id-comment-title, #id-comment-comment {
+    background: none;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 0 5px;
+    margin-left: 3px;
+    font-size: 12pt;
+    color: #dadada;
+    font-family: $font-sans;
+    margin-top: 11px;
+}
+
+#id-comment-title {
+    width: 400px;
+    height: 25px;
+}
+
+#id-comment-comment {
+    width: 400px;
+    height: 75px;
+}
+
+#id-comment-title:focus {
+    border: none
+}
+
+#emptysection {
+    text-align: center;
+    margin: 0 500px 80px 500px;
+}
+
+// new listing page
+
+#new-listing {
+    height: 605px;
+}
+
+#form {
+    border: 1px solid #cfcfcf;
+    border-radius: 10px;
+    margin: 55px 220px;
+    height: 550px;
+    background-color: #e8e8e8;
+    box-shadow: 0 4px 8px 0 rgba(21,21,21,0.2);
+
+    h4 {
+        font-size: 18pt;
+        text-align: center;
+        margin: 30px 0 0 0;
+        font-weight: 600;
+        color: #A41034;    
+    }
+}
+
+
+#title, #description, #image, #starting_bid, #category, #condition {
+    background-color: #A41034;
+    color: #ffb349;
+    font-size: 13pt;
+    font-weight: 600;
+    margin: 10px 100px;
+    height: 35px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+
+    #id_title, #id_description, #id_image, #id_starting_bid, #id_category, #id_condition {
+        background: none;
+        border: none;
+        outline: none;
+        height: 30px;
+        width: 750px;
+        padding-left: 5px;
+        margin-left: 3px;
+        color: #dadada;
+        font-size: 11pt;
+        font-family: $font-sans;
+    }
+    
+}
+
+#description {
+    height: 70px;
+    padding: 5px 10px;
+
+    div {
+        padding: 20px 5px;
+        float: left;
+    }
+    
+    #id_description {
+        border: none;
+        height: 45px;
+        width: 700px;
+        resize: none;
+        margin-top: 11px;
+    }
+}
+
+#category, #condition, #starting_bid {
+    width: 355px;
+
+    div {
+        float: left;
+    }
+
+    #id_category, #id_condition, #id_starting_bid {
+        text-align: center;
+        width: 210px;
+    }
+
+    #id_category:focus, #id_condition:focus {
+        background-color: #A41034;
+    }
+
+    #id_starting_bid {
+        width: 135px;
+        padding-left: 0;
+        margin-left: 0;
+    }
+}
+#button {
+    text-align: center;
+    margin: 35px 0;
+    outline: none;
+}
+
+#btn-create {
+    font-family: $font-sans;
+    font-size: 12pt;
+    background-image: linear-gradient(to bottom right, #A41034, #ffb349);
+    color: #dadada;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    width: 180px;
+    height: 45px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+
+#btn-create:hover {
+    background: #ffb349;
+    color: #A41034;
+    cursor: pointer;
+
+}
+
+#watchlist-body {
+    margin-top: 35px;
+}
+
+.emptywatchlist {
+    margin: 50px 200px 0 200px;
+    text-align: center;
+
+    img {
+        width: 500px;
+    }
+}
+
+
+

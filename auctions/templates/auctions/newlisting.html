@@ -1,0 +1,66 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+        <div>
+            {% if message %}
+                <div>Listing Saved!</div>
+            {% endif %}
+        </div>
+
+        <div id="new-listing">
+
+            <div id="form">
+
+                <form action="{% url 'newlisting' %}" method="POST">
+                    <h4>New Listing</h4>
+
+                    {% csrf_token %}                                            
+                    <div id="title">
+                        <span>TITLE</span>
+                        <input id="id_title" type="text" name="title" maxlength="25" autofocus required>
+                    </div>
+
+                    <div id="description">
+                        <div>DESCRIPTION</div>
+                        <textarea id="id_description" name="description" cols="50" rows="4" maxlength="100" required></textarea>
+                    </div>
+
+                    <div id="image">
+                        IMAGE
+                        <input id="id_image" type="text" name="image" maxlength="200" value="https://gitcdn.link/repo/SammanthaPS/Images/main/noimage.png">
+                    </div>
+
+                    <div id="starting_bid">
+                        STARTING BID $
+                        <input id="id_starting_bid" name="starting_bid" type="number" value="5.00" step="0.01" max="1000000" required>
+                    </div>
+
+                    <div id="category">
+                        <div>CATEGORY</div>
+                        <select id="id_category" name="category" required>
+                            <option value="">Select a Category</option>
+                            <option value="1">Fashion</option>
+                            <option value="2">Electronics</option>
+                            <option value="3">Toys & Collectibles</option>
+                            <option value="4">Books, Movies & Music</option>
+                        </select>
+                    </div>
+
+                    <div id="condition">
+                        <div>CONDITION</div>
+                        <select id="id_condition" name="condition" required>
+                            <option value="">Select a Condition</option>
+                            <option value="1">New</option>
+                            <option value="2">Used</option>
+                        </select>
+                    </div>
+                    
+                    <div id="button">
+                        <input id="btn-create" type="submit" value="CREATE LISTING">
+                    </div>
+
+                </form>
+    
+            </div>
+        </div>
+{% endblock %}

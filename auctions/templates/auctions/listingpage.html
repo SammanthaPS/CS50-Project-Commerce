@@ -1,0 +1,129 @@
+{% extends 'auctions/layout.html' %}
+{% load static %}
+
+{% block body %}
+
+    <div id="message-bid">
+        {% if alert %}
+            <div id="bid-alert-message">
+                Error! Your bid should be greater than the current bid.
+            </div>
+        {% elif success %}
+            <div id="bid-success-message">
+                Yay! Your bid was successfull.
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="listing-info">
+
+        <div class="info-img">
+            <div class="info-img-img">
+                <img src="{{ listing.image }}">
+            </div>
+        </div>
+
+        <div class="info">
+
+            <div class="ititle">{{ listing.title }}</div>
+
+            <div class="icondcat">
+                {% if active %}
+                    <div><span>Condition: </span>{{ listing.condition }}</div>
+                    <div><span>Category: </span>{{ listing.category }}</div>
+                    <div><span>Seller: </span>{{ listing.user }}</div>
+                    <div><span>Starting bid: </span>${{ listing.starting_bid }}</div>
+                {% else %}
+                    {% if request.user != winner %}
+                        <div class="bidquote">Going once, going Twice, sold! Auction Closed! </div>
+                        <div class="winnerquote">Congratulations, {{ winner }}!</div>
+                    {% else %}
+                        <div class="bidquote">Going once, going Twice, sold!</div>
+                        <div class="winnerquote">Congratulations! You Won!</div>
+                        <div class="winnerimage"><img src="{% static 'auctions/Images/winner.png' %}"></div>
+                    {% endif %}
+                    <div class="finalprice"><span>Final Price: </span>${{ bid|floatformat:2 }}</div>
+                {% endif %}
+
+            </div>
+            {% if active %}
+                <div class="idescription">"{{ listing.description }}"</div>
+                <div class="ibid"><span>Current Bid: </span>${{ bid|floatformat:2 }}<span id="bid-from"> from {{ maxbiduser }}</span></div>
+            {% endif %}
+
+            <div class="ibtn">
+                {% if user.is_authenticated %}
+                    {% if active %}
+                        {% if request.user != listing.user %}
+                            <form action="{% url 'listingpage' listing.id %}" method="POST">
+                                {% csrf_token %}
+                                <div id="bid-form">
+                                    <div>
+                                        <span>$</span>
+                                        <input id="id_bid" name="bid" type="number" value="{{ bid|floatformat:2 }}" step="0.01" max="1000000" required>
+                                    </div>
+                                    <div id="btn-place-bid">
+                                        <input id="id_btn-bid" type="submit" value="Place Bid">    
+                                    </div>    
+                                </div>
+                            </form>
+                            {% if added %}
+                                <a href="{% url 'addwatchlist' listing.id %}"><button>Remove from Watchlist</button></a>
+                            {% else %}
+                                <a href="{% url 'addwatchlist' listing.id %}"><button>Add to Watchlist</button></a>
+                            {% endif %}
+                        {% else %}
+                            <a href="{% url 'closeauction' listing.id %}"><button type="submit">Close Bid</button></a>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+    <div>
+        <div id="comments">Comments</div>
+        {% if user.is_authenticated %}<!-- User need to be logged to see comments. -->
+            {% if active %}
+                <div><!-- form to add a comment. -->
+                    {% if request.user != listing.user %}
+                        <form id="commentform" action="{% url 'addcomment' listing.id %}" method="POST">
+                            <div id="section-title">Leave a comment!</div>
+                            {% csrf_token %}
+                            <div id="comment-title">
+                                <input id="id-comment-title" type="text" name="title" placeholder="Subject" maxlength="30" required>
+                            </div>
+                
+                            <div id="comment-comment">
+                                <textarea id="id-comment-comment" name="comment" placeholder="Write your comment here." cols="50" rows="4" maxlength="100" required></textarea>
+                            </div>
+
+                            <div id="button">
+                                <input id="btn-create" type="submit" value="Submit">
+                            </div>
+                        </form>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {% if emptycomments %}
+                <div id="emptysection">
+                    <img src="{% static 'auctions/Images/nocomments.png' %}" width="360px">
+                </div>
+            {% else %}
+                {% for comment in comments %}
+                    <div id="comment-section">
+                        <div id="commentUser">{{ comment.user }}<span> - Verified User - {{ comment.created_on }}</span></div>
+                        <div id="commentTitle">{{ comment.title }}</div>
+                        <div id="commentText">{{ comment.comment }}</div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% else %}
+            <div id="loginrequired">
+                <img src="{% static 'auctions/Images/loginrequired.png' %}" width="500px">
+            </div>         
+        {% endif %}
+    </div>
+{% endblock %}

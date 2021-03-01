@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>E-Auction/Login</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+        <link rel="stylesheet" href="{% static 'auctions/CSS/login-register.css' %}">
+    </head>
+
+    <body id="bg">
+        <div id="nav-image">
+            <a id="image-link" href="{% url 'index' %}">
+                <img id="img" src="{% static 'auctions/Images/shield.png' %}" alt="E-Auction">
+            </a>
+        </div>    
+
+        <div class="section" id="section">
+            <div class="container">
+                <div class="row full-height justify-content-center">
+                    <div class="col-12 text-center align-self-center py-5">
+                        <div class="section pb-5 pt-5 pt-sm-2 text-center" id="divCard">
+                            <h6 class="mb-0 pb-3"><span>Log In </span><span>Register</span></h6>
+                              <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
+                              <label for="reg-log"></label>
+                            
+                            <div class="card-3d-wrap mx-auto">
+                                <div class="card-3d-wrapper">
+                                    <div class="card-front">
+                                        <div class="center-wrap">
+                                            <div class="section text-center" id="divCard">
+                                                <h4 class="mb-4 pb-3">Log In</h4>
+                                                {% if message %}
+                                                    <div class="alert-message">{{ message }}</div>
+                                                {% endif %}
+                                                <form action="{% url 'login' %}" method="post">
+                                                    {% csrf_token %}
+                                                    <div class="form-group">
+                                                        <input type="text" name="username" class="form-style" placeholder="Username" autocomplete="none" autofocus required>
+                                                        <i class="input-icon uil uil-at"></i>
+                                                    </div>	
+                                                    <div class="form-group mt-2">
+                                                        <input type="password" name="password" class="form-style" placeholder="Password" autocomplete="none" required>
+                                                        <i class="input-icon uil uil-lock-alt"></i>
+                                                    </div>
+                                                    <input type="submit" class="btn mt-4" value="Login">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-back">
+                                        <div class="center-wrap">
+                                            <div class="section text-center" id="divCard">
+                                                <h4 class="mb-4 pb-3">Sign Up</h4>
+                                                {% if alert %}
+                                                    <div class="alert-message">{{ alert }}</div>
+                                                {% endif %}
+
+                                                <form action="{% url 'register' %}" method="post">
+                                                    {% csrf_token %}
+                                                    <div class="form-group">
+                                                        <input type="text" name="username" class="form-style" placeholder="Username" id="logname" autocomplete="none" autofocus required>
+                                                        <i class="input-icon uil uil-user"></i>
+                                                    </div>
+                                                    <div class="form-group mt-2">
+                                                        <input type="email" name="email" class="form-style" placeholder="Email" id="logemail" autocomplete="none" required>
+                                                        <i class="input-icon uil uil-at"></i>
+                                                    </div>	
+                                                    <div class="form-group mt-2">
+                                                        <input type="password" name="password" class="form-style" placeholder="Password" id="logpass" autocomplete="none" required>
+                                                        <i class="input-icon uil uil-lock-alt"></i>
+                                                    </div>
+                                                    <div class="form-group mt-2">
+                                                        <input type="password" name="confirmation" class="form-style" placeholder="Confirm Password" id="logpass" autocomplete="none" required>
+                                                        <i class="input-icon uil uil-lock-alt"></i>
+                                                    </div>
+                                                    <input type="submit" class="btn mt-4" value="Register">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>

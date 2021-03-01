@@ -1,0 +1,56 @@
+{% extends 'auctions/layout.html' %}
+{% load static %}
+
+{% block body %}
+
+    <div id="watchlist-body">
+        {% if empty %}
+
+        <div class="emptywatchlist">
+            <img src="{% static 'auctions/Images/EmptyListing.png' %}">
+        </div>
+
+        {% else %}
+            {% for list in listings %}
+                <div id="l-c">
+                    <div id="c-c">
+
+                        <div id="c-img">
+                            <div>
+                                <a href="{% url 'listingpage' list.id %}">
+                                    <img src="{{ list.image }}">
+                                </a>        
+                            </div>
+                        </div>
+
+                        <div id="c-title">
+                            <a href="{% url 'listingpage' list.id %}">
+                                {{ list.title }}
+                            </a>
+                        </div>
+                        {% if list.active %}
+                            <div id="c-description">
+                                "{{ list.description }}"
+                            </div>
+
+                            <div id="c-seller">
+                                Seller: {{ list.user }}
+                            </div>
+
+                            <div id="c-bid">
+                                ${{ list.starting_bid }}
+                            </div>
+                        {% else %}
+                            <div>
+                                <div id="closed-auction">Auction Closed!</div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            {% endfor %}
+        {% endif %}
+
+    </div>
+
+{% endblock %}
