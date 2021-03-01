@@ -30,7 +30,8 @@ In the distribution code is a Django project called `commerce` that contains a s
 Take a look at `auctions\models.py` to see the models for User, Category, Condition, Listing, Bid, Comment and Watchlist.
 
 On `auctions\views.py` there are 12 functions to fulfill the specification listed above.
-  1. `index` the default route of my web aplication.
+  1. `User` for authentication.
+  2. `index` the default route of my web aplication.
       * On the index page, the user will be able to select a category, sign in/register, or search for a listing.
   2. `login`, `logout` and `register` for authentication purpose.
   3. `NewListing` to create a new listing.
