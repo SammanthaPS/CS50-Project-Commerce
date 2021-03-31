@@ -1,4 +1,4 @@
-# CS50'S Web Programming with Python and JavaScript - Commerce
+# Commerce - CS50'S Web Programming with Python and JavaScript - Commerce
 
 Design an eBay-like e-commerce auction site that will allow users to post auction listings, place bids on listings, comment on those listings, and add to a "watchlist".
 
